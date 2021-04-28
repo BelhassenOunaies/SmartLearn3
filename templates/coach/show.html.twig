@@ -1,0 +1,30 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Coach{% endblock %}
+
+{% block body %}
+    <h1>Coach</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ coach.username }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ coach.mail }}</td>
+            </tr>
+            <tr>
+                <th>Date_n</th>
+                <td>{{ coach.dateN ? coach.dateN|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('coach_index') }}">back to list</a>
+
+    <a href="{{ path('coach_edit', {'id': coach.id}) }}">edit</a>
+
+    {{ include('coach/_delete_form.html.twig') }}
+{% endblock %}

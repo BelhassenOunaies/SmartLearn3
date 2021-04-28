@@ -1,0 +1,39 @@
+
+{% extends 'baseAdmin.html.twig' %}
+
+
+
+{% block body %}
+    <h1>Course index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for course in courses %}
+            <tr>
+                <td>{{ course.id }}</td>
+                <td>{{ course.titre }}</td>
+                <td>{{ course.description }}</td>
+                <td>
+                    <a href="{{ path('course_show', {'id': course.id}) }}">show</a>
+                    <a href="{{ path('course_edit', {'id': course.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('course_new') }}">Create new</a><br>
+    <a href="{{ path('course_pdf') }}" target="_blank">Generate Pdf</a>
+{% endblock %}

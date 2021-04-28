@@ -1,0 +1,41 @@
+{% extends 'basefront.html.twig' %}
+
+
+
+{% block body %}
+
+
+<div class="row">
+        {% for coach in coachs %}
+
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item">
+                    <a class="team-img" href="{{ path('coachfront_show', {'id_user': coach.idUser}) }}">
+                        <img src="{{ asset('/front/img/user.png') }}" alt="Image">
+                        <div class="team-social">
+                            <a href=""><i class="fab fa-twitter"></i></a>
+                            <a href=""><i class="fab fa-facebook-f"></i></a>
+                            <a href=""><i class="fab fa-linkedin-in"></i></a>
+                            <a href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </a>
+                    <div class="team-text">
+                        <h2>{{coach.username}} </h2>
+                        <p> {{ coach.mail }}</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+
+</div>
+
+
+                <a href="{{ path('coachfront_new') }}">Create new</a>
+{% endblock %}

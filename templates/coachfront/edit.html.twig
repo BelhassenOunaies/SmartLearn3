@@ -1,0 +1,13 @@
+{% extends 'basefront.html.twig' %}
+
+{% block title %}Edit coach{% endblock %}
+
+{% block body %}
+    <h1>Edit coach</h1>
+
+    {{ include('coachfront/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('coachfront_index') }}">back to list</a>
+
+    {{ include('coachfront/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New Student{% endblock %}
+
+{% block body %}
+    <h1>Create new Student</h1>
+
+    {{ include('simple/_form.html.twig') }}
+
+    <a href="{{ path('simple_index') }}">back to list</a>
+{% endblock %}

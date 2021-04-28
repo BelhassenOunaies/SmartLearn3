@@ -1,0 +1,11 @@
+{% extends 'basefront.html.twig' %}
+
+{% block title %}New coach{% endblock %}
+
+{% block body %}
+    <h1>Create new coach</h1>
+        {{ include('coachfront/_form.html.twig') }}
+
+    <a href="{{ path('coachfront_index') }}">back to list</a>
+
+    {% endblock %}

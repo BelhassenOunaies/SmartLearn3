@@ -1,0 +1,11 @@
+{% extends 'basefront.html.twig' %}
+
+{% block title %}New Simple{% endblock %}
+
+{% block body %}
+    <h1>Create new Simple User</h1>
+        {{ include('simplefront/_form.html.twig') }}
+
+    <a href="{{ path('simplefront_index') }}">back to the list</a>
+
+    {% endblock %}

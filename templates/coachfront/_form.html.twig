@@ -1,0 +1,28 @@
+
+
+
+{{ form_start(form,{'attr':{'novalidate':'novalidate','class':'booking-form'}}) }}
+<div class="col-lg-5">
+    <div class="booking-form">
+
+{{ form_widget(form.username,{ 'attr':{'class':'form-control','placeholder':'YOUR nom *'}}) }}
+{{ form_errors(form.username) }}
+
+    {{ form_widget(form.password,{ 'attr':{'class':'form-control','placeholder':'YOUR motdepasse *'}}) }}
+{{ form_errors(form.password) }}
+
+ {{ form_widget(form.mail,{ 'attr':{'class':'form','placeholder':'YOUR mail *'}}) }}
+{{ form_errors(form.mail) }}
+
+
+    {{ form_widget(form.date_n,{ 'label':'','attr':{'class':'form-control','placeholder':'YOUR date *'}}) }}
+    {{ form_errors(form.date_n) }}
+
+
+{{ form_rest(form) }}
+<div class="col-md-offset-5" > <button class="btn custom-btn">{{ button_label|default('Save') }}</button> </div>
+    </div>
+
+</div>
+{{ form_end(form) }}
+

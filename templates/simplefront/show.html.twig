@@ -1,0 +1,28 @@
+{% extends 'basefront.html.twig' %}
+
+{% block title %}Simple{% endblock %}
+
+{% block body %}
+    <h1>Simple</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ simple.username }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ simple.mail }}</td>
+            </tr>
+            <tr>
+                <th>Date of birth</th>
+                <td>{{ simple.dateN ? simple.dateN|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('simplefront_index') }}">back to list</a>
+
+
+{% endblock %}

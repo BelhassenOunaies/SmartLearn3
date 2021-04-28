@@ -1,0 +1,13 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Edit Student{% endblock %}
+
+{% block body %}
+    <h1>Edit Student</h1>
+
+    {{ include('simple/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('simple_index') }}">back to list</a>
+
+    {{ include('simple/_delete_form.html.twig') }}
+{% endblock %}
