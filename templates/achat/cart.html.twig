@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher Achats !{% endblock %}
+
+{% block body %}
+    <h2>Cart</h2>
+    <table border="1">
+        <tr>
+            <th>title</th>
+            <th>description</th>
+            <th>price</th>
+            <th>Actions</th>
+
+        </tr>
+        {% for a in achats_cours %}
+            <tr >
+                <td>{{ a.title }}</td>
+                <td>{{ a.description }}</td>
+                <td>{{ a.price }} TND</td>
+
+                {% set break = false %}
+                {% for ach in achats   %}
+                    {% if ach.courseId == a.id and not break%}
+                        <td><a href="{{ path('delete_one_cart', {'id':ach.id} )}}">Delete</a></td>
+                        {% set break = true %}
+                    {% endif %}
+                {% endfor %}
+            </tr >
+        {% endfor %}
+    </table>
+    <p id="total_price">Prix Total : {{ totalPrice }} TND</p>
+    <div>
+        <label for="coupon_field">Code Coupon : </label>
+        <input name="coupon_field" id="coupon_field" type="text">
+        <a id="coupon_field_btn" href="">Appliquer</a>
+    </div>
+    <div>______________</div>
+    <td><a href="{{ path('dashboard' )}}">Retour</a></td>
+    <td><a href="{{ path('validate_achats' )}}">Valider Achat</a></td>
+    <td><a href="{{ path('delete_all_achats' )}}">Supprimer Tous</a></td>
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <script language = "javascript"
+            src = "https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <script language = "javascript">
+        var total = {{ totalPrice }};
+        total = parseFloat(total);
+        $(document).ready(function(){
+            $("#coupon_field_btn").on("click", function(event){
+                event.preventDefault();
+                $.ajax({
+                    url:        '/achat/appliquer_coupon',
+                    type:       'POST',
+                    dataType:   'json',
+                    async:      true,
+                    data : { textId : $("#coupon_field").val() },
+
+                    success: function(data, status) {
+                        if(data.length == 0)
+                        {
+                            alert("Coupon non valide !!");
+                        }
+                        else
+                        {
+                            $("#total_price").text("Prix Total : " + (total - total * (parseFloat(data[0]['percentage'])/100)).toString() + " TND");
+
+                        }
+
+                    },
+                    error : function(xhr, textStatus, errorThrown) {
+                        var err = JSON.parse(xhr.responseText);
+                        alert(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher Achats !{% endblock %}
+
+{% block body %}
+    <h2>Liste Achats</h2>
+    <table border="1">
+        <tr>
+            <th>text id</th>
+            <th>percentage</th>
+            <th>used</th>
+
+        </tr>
+        <tr {% for a in coupons %}>
+            <td>{{ a.textId }}</td>
+            <td>{{ a.percentage }}</td>
+            <td>{% if a.used == 1  %} OUI {% else %} NON {% endif %}</td>
+
+            <td><a href="{{ path('delete_coupon', {'id':a.id} )}}">Delete</a></td>
+        </tr {% endfor %}>
+    </table>
+
+    <td><a href="{{ path('add_coupon' )}}">Ajouter Nouveau</a></td>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Reclamations !{% endblock %}
+
+
+
+{% block body %}
+    <h2>Modifier Nouveau Reclamations</h2>
+    {{ form(form) }}
+
+    <td><a href="{{ path('reclamation' )}}">Annuler</a></td>
+
+
+{% endblock %}

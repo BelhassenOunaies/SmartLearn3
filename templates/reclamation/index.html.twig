@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher Reclamations !{% endblock %}
+
+{% block body %}
+    <h2>Liste Reclamations</h2>
+    <table border="1">
+        <tr>
+            <th>id</th>
+
+            <th>title</th>
+            <th>description</th>
+            <th>date_reclamation</th>
+            <th>resolu</th>
+            <th>reply</th>
+        </tr>
+        <tr {% for a in reclamations %}>
+            <td>{{ a.id }}</td>
+            <td>{{ a.title }}</td>
+            <td>{{ a.description }}</td>
+            <td>{{ a.reclamationDate|date('d-m-Y')  }}</td>
+            <td>{{ a.resolu }}</td>
+            <td>{{ a.reply }}</td>
+            <td><a href="{{ path('inspecter_reclamation', {'id':a.id} )}}">Inspecter</a></td>
+            <!-- <td><a href="{{ path('update_reclamation', {'id':a.id} )}}">Inspecter</a></td>-->
+            <td><a href="{{ path('delete_reclamation', {'id':a.id} )}}">Delete</a></td>
+        </tr {% endfor %}>
+    </table>
+    <a href="{{ path('admin' )}}">Admin</a>
+
+
+{% endblock %}

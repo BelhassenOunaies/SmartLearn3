@@ -35,7 +35,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "2.3",
-            "ref": "9777bf185961283a450b6237281132935025fe04"
+            "ref": "6e0f582596a8f1c865aaa0d3cceb9bf0daf609b4"
         },
         "files": [
             "./config/packages/doctrine.yaml",
@@ -82,23 +82,14 @@
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
-    "dompdf/dompdf": {
-        "version": "v1.0.2"
-    },
     "egulias/email-validator": {
         "version": "3.1.1"
     },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },
-    "gregwar/captcha": {
-        "version": "v1.1.9"
-    },
-    "gregwar/captcha-bundle": {
-        "version": "v2.1.5"
-    },
     "laminas/laminas-code": {
-        "version": "4.1.0"
+        "version": "4.2.0"
     },
     "laminas/laminas-eventmanager": {
         "version": "3.3.1"
@@ -111,12 +102,6 @@
     },
     "nikic/php-parser": {
         "version": "v4.10.4"
-    },
-    "phenx/php-font-lib": {
-        "version": "0.5.2"
-    },
-    "phenx/php-svg-lib": {
-        "version": "v0.3.3"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
@@ -138,9 +123,6 @@
     },
     "psr/log": {
         "version": "1.1.3"
-    },
-    "sabberworm/php-css-parser": {
-        "version": "8.3.1"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
@@ -271,6 +253,15 @@
             "./src/Controller/.gitignore",
             "./src/Kernel.php"
         ]
+    },
+    "symfony/google-mailer": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.4",
+            "ref": "f8fd4ddb9b477510f8f4bce2b9c054ab428c0120"
+        }
     },
     "symfony/http-client": {
         "version": "v4.4.21"

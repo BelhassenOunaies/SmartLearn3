@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher Reclamations !{% endblock %}
+
+{% block body %}
+    <h2>Inspecter Reclamation</h2>
+    <table>
+        <tr>
+            <td>id</td>
+            <td id="rec_id">{{ reclamation.id }}</td>
+        </tr>
+        <tr>
+            <td>title</td>
+            <td>{{ reclamation.title }}</td>
+        </tr>
+        <tr>
+            <td>description</td>
+            <td>{{ reclamation.description }}</td>
+        </tr>
+        <tr>
+            <td>date</td>
+            <td>{{ reclamation.reclamationDate|date('Y-m-d') }}</td>
+        </tr>
+        <tr>
+            <td>probleme resolu</td>
+            <td id="resolu_field">{% if reclamation.resolu == 1  %} OUI {% else %} NON {% endif %}</td>
+        </tr>
+        <tr>
+            <td>reponse</td>
+            <td><textarea id="reply_field" name="" id="" cols="30" rows="10" >{{ reclamation.reply }}</textarea></td>
+        </tr>
+    </table>
+    <a id="resoudre_btn" href="">Resoudre</a>
+    <a id="repondre_btn" href="">Donner reponse</a>
+    <div></div>
+    <a href="{{ path('reclamation' )}}">Retour</a>
+{% endblock %}
+
+{% block javascripts %}
+    <script language = "javascript"
+            src = "https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <script language = "javascript">
+
+        $(document).ready(function(){
+            $("#resoudre_btn").on("click", function(event){
+                event.preventDefault();
+                var id = $("#rec_id").text();
+                $.ajax({
+                    url:        '/reclamation/make_resolved/'+id,
+                    type:       'POST',
+                    dataType:   'json',
+                    async:      true,
+                    //data : { textId : $("#coupon_field").val() },
+
+                    success: function(data, status) {
+
+                            $("#resolu_field").text("OUI");
+
+
+                    },
+                    error : function(xhr, textStatus, errorThrown) {
+                        var err = JSON.parse(xhr.responseText);
+                        alert(xhr.responseText);
+                    }
+                });
+            });
+
+            $("#repondre_btn").on("click", function(event){
+                event.preventDefault();
+                var id = $("#rec_id").text();
+                $.ajax({
+                    url:        '/reclamation/reply/'+id,
+                    type:       'POST',
+                    dataType:   'json',
+                    async:      true,
+                    data : { reply : $("#reply_field").val() },
+
+                    success: function(data, status) {
+
+
+
+                    },
+                    error : function(xhr, textStatus, errorThrown) {
+                        var err = JSON.parse(xhr.responseText);
+                        alert(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+

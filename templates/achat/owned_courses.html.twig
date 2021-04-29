@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cours Possédées !{% endblock %}
+
+{% block body %}
+    <h2>Cours Possédées</h2>
+
+    <table border="1">
+        <tr>
+            <th>title</th>
+            <th>description</th>
+
+            <th>Actions</th>
+
+        </tr>
+        {% for a in achats_cours %}
+            <tr >
+                <td>{{ a.title }}</td>
+                <td>{{ a.description }}</td>
+
+
+                {% set break = false %}
+                {% for ach in achats   %}
+                    {% if ach.courseId == a.id and not break%}
+                        <td><a href="">Regarder</a></td>
+                        {% set break = true %}
+                    {% endif %}
+                {% endfor %}
+            </tr >
+        {% endfor %}
+    </table>
+    <div>______________</div>
+    <td><a href="{{ path('dashboard' )}}">Retour</a></td>
+
+
+{% endblock %}

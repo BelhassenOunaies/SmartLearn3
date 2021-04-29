@@ -1,3 +1,7 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+#achat_controller:
+#    path: /achat/create
+#    controller: App\Controller\AchatController::create

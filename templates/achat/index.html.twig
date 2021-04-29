@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher Achats !{% endblock %}
+
+{% block body %}
+    <h2>Liste Achats</h2>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>user_id</th>
+            <th>course_id</th>
+            <th>date_achat</th>
+            <th>achat_finalise</th>
+        </tr>
+        <tr {% for a in achats %}>
+            <td>{{ a.id }}</td>
+            <td>{{ a.userId }}</td>
+            <td>{{ a.courseId }}</td>
+            <td>{{ a.dateAchat|date('d-m-Y')  }}</td>
+            <td>{{ a.achatFinalise }}</td>
+            <td><a href="{{ path('update', {'id':a.id} )}}">Update</a></td>
+            <td><a href="{{ path('delete', {'id':a.id} )}}">Delete</a></td>
+        </tr {% endfor %}>
+    </table>
+
+    <td><a href="{{ path('add' )}}">Ajouter Nouveau</a></td>
+
+{% endblock %}
